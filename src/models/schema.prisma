@@ -10,13 +10,26 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int        @id @default(autoincrement())
+  cpf       String     @unique @db.Char(11)
+  email     String     @unique @db.VarChar(75)
+  address   String
+  hash      String
+  salt      String
+  firstName String     @map("first_name") @db.VarChar(25)
+  lastName  String     @map("last_name") @db.VarChar(25)
+  Pets  Pet[]
+}
+
 model Pet {
   id Int @id @default(autoincrement())
   type String
   breed String
   name String
-  ownerName String
   age Int
+  owner User? @relation(fields: [ownerId], references: [id])
+  ownerId Int?
   vaccines Vaccine[]
 }
 
