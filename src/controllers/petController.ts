@@ -6,14 +6,13 @@ const prisma = new PrismaClient();
 class PetController {
   async create(request: Request, response: Response) {
     try {
-      const { type, breed, name, ownerName } = request.body;
+      const { type, breed, name } = request.body;
       const age = Number(request.body.age);
 
       let petInput: Prisma.PetCreateInput = {
         type,
         breed,
         name,
-        ownerName,
         age,
       };
       const pet = await prisma.pet.create({
@@ -56,13 +55,12 @@ class PetController {
   async update(request: Request, response: Response) {
     try {
       const { id } = request.params;
-      const { type, breed, name, ownerName, age } = request.body;
+      const { type, breed, name, age } = request.body;
 
       let petInput: Prisma.PetCreateInput = {
         type,
         breed,
         name,
-        ownerName,
         age,
       };
 
