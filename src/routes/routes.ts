@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import AuthController from '../controllers/authController';
+import UserController from '../controllers/userController';
 import VaccineController from '../controllers/vaccineController';
 import PetController from '../controllers/petController';
 
@@ -7,6 +8,12 @@ const router = Router();
 
 router.post('/login', AuthController.login);
 router.get('/userInfo', AuthController.getDetails);
+
+router.post('/user', UserController.create);
+router.get('/user/:id', UserController.read);
+router.get('/users', UserController.readAll);
+router.put('/user/:id', UserController.update);
+router.delete('/userDelete/:id', UserController.destroy);
 
 router.post('/pet', PetController.create);
 router.get('/pet/:id', PetController.read);
