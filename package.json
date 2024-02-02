@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "keys": "npx ts-node src/config/generateRSAKeyPair.ts",
     "start": "npx ts-node-dev --transpile-only --no-notify server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
