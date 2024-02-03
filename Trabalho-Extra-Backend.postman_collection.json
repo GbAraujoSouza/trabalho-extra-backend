@@ -1,0 +1,710 @@
+{
+	"info": {
+		"_postman_id": "74af68b5-2746-40c8-b9ea-e457c855a3b1",
+		"name": "Trabalho Extra Backend",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32419699"
+	},
+	"item": [
+		{
+			"name": "Pet Request",
+			"item": [
+				{
+					"name": "Create pet",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "type",
+									"value": "cat",
+									"type": "text"
+								},
+								{
+									"key": "breed",
+									"value": "gato preto",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Pitchulo",
+									"type": "text"
+								},
+								{
+									"key": "ownerName",
+									"value": "Gabriel de Araujo",
+									"type": "text"
+								},
+								{
+									"key": "age",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/pet",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pet"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "dog",
+									"disabled": true
+								},
+								{
+									"key": "breed",
+									"value": "poodle",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "nina",
+									"disabled": true
+								},
+								{
+									"key": "ownerName",
+									"value": "Gabriel de Araujo",
+									"disabled": true
+								},
+								{
+									"key": "age",
+									"value": "7",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read pet",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/pet/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all pets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/pets",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update pet",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "ownerName",
+									"value": "Karla",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/pet/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pet",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete pet",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/petDelete/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"petDelete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User Request",
+			"item": [
+				{
+					"name": "Create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "gabriel.souzaaraujo109@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "cpf",
+									"value": "15576926706",
+									"type": "text"
+								},
+								{
+									"key": "address",
+									"value": "R. Antimonio 60, Parque Alian, RJ",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "Gabriel",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Souza",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "dog",
+									"disabled": true
+								},
+								{
+									"key": "breed",
+									"value": "poodle",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "nina",
+									"disabled": true
+								},
+								{
+									"key": "ownerName",
+									"value": "Gabriel de Araujo",
+									"disabled": true
+								},
+								{
+									"key": "age",
+									"value": "7",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/user/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read all users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/users",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "lastName",
+									"value": "Araujo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/user/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/userDelete/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"userDelete",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vaccine Request",
+			"item": [
+				{
+					"name": "Create vaccine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "vacina tipo 1",
+									"type": "text"
+								},
+								{
+									"key": "dosage",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2024-02-02",
+									"type": "text"
+								},
+								{
+									"key": "loNumber",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "manufacturer",
+									"value": "Pfizer",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/vaccine",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"vaccine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read vaccine",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Read all vaccines",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Update vaccine",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "dosage",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/vaccine/9",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"vaccine",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/vaccineDelete/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"vaccineDelete",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Relation",
+			"item": [
+				{
+					"name": "Take vaccine",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "idPet",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "raiva",
+									"type": "text"
+								},
+								{
+									"key": "dosage",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "date",
+									"value": "2024-1-29",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "lotNumber",
+									"value": "43###XXT",
+									"type": "text"
+								},
+								{
+									"key": "manufacturer",
+									"value": "Jansen",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/takeVaccine",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"takeVaccine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read pet vaccine",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "idPet",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/pet/2/vaccines",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pet",
+								"2",
+								"vaccines"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete vaccine record",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/pet/1/removeVaccine/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"pet",
+								"1",
+								"removeVaccine",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Authentication Requests",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "gabriel.souzaaraujo109@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Infos with Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImlhdCI6MTcwNjkxMTYyMDMxMCwiZXhwIjoxNzA2OTEyMjI1MTEwfQ.kr3c5RczTk8OUpJ0X5lDWu_u5dMSz5dHhxcgEUIyhsUEmxPjPwXYyFZnCGkjn_6I6dBR8ZUKsG89dNdfl1bTTpuLo_9v1J4juzMT7OSJJWlkO5NugUCJi8Er-P71V5M8lH6O4Gaf57C_m7LPLLjY_tH6MXu9c1PwshLBmE7FvWnFQYCjtPxYqoUZFNEHSarCLYzV-yl9sIpvBlXLOzwuGZMVcOP62hhz45D9X5LGbKNxPYGIRz_OQpelaehrpnkyCf5Ma-A19aoThJnR3sBQhn4nU8jHammrLLjq0AxyAPM7I1SfrPT0qsiC7BqIiTcwCBGGvuX7gfl2tzgx0RF3VnTSgRO9QOtQhdjg7KD54CFqBr1VDXAruDlfvTLm6STxbaHY6Pb5bGm2AX8db8Sawoa3GI4nGCBbPfyeOQJutWQLYY-HlqBOZhdTdDeENcLsrYed0wGQqww-D6zOQExNlRYYDKRlj-ru_G1RYaBE7OcXgNQF3O4eJcRRdE35EwGyzH2IWmrfxpwEmhQws7TBF5w-5dUeV4UKBIaAF3J84qimT4iCwUuqcLKAdF-T4vr_rdRzAYsmR6TLLrM7HiDyGpPxR48vBTt_IqpfJ_VlfHZc0RZ-B7p4kYJoOdzGilsB8K6P-IKhsg2EU5JgkMuR1Er-UUCeABD19j00b31N4Go",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3333/userInfo",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"userInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Multer Request",
+			"item": [
+				{
+					"name": "Upload text file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "text",
+									"type": "file",
+									"src": "/C:/Users/ggk22/Desktop/testeTrabalhoBack.txt"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/user/text",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user",
+								"text"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload image file",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "profileImage",
+									"type": "file",
+									"src": "/C:/Users/ggk22/Pictures/wallpaper.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:3333/user/profileImage",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"user",
+								"profileImage"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
