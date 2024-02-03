@@ -391,4 +391,20 @@ function validatorVaccine(method: string) {
   }
 }
 
-export { validatorUser, validatorPet, validatorVaccine };
+function validatorLogin(method: string) {
+  switch (method) {
+    case 'login': {
+      return [
+        body('email')
+          .exists()
+          .withMessage('O campo não pode ser nulo')
+          .isLength({ min: 1 })
+          .withMessage('O corpo de email deve ser preenchido')
+          .isEmail()
+          .withMessage('Precisa ser como exemplo@exemplo'),
+      ];
+    }
+  }
+}
+
+export { validatorUser, validatorPet, validatorVaccine, validatorLogin };

@@ -7,13 +7,14 @@ import {
   validatorUser,
   validatorPet,
   validatorVaccine,
+  validatorLogin,
 } from '../config/validator';
 
 import { photoUpload, textUpload } from '../config/files';
 
 const router = Router();
 
-router.post('/login', AuthController.login);
+router.post('/login', validatorLogin('login')!, AuthController.login);
 router.get('/userInfo', AuthController.getDetails);
 
 router.post('/user', validatorUser('create')!, UserController.create);
