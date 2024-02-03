@@ -3,6 +3,10 @@ import { Request, Response, response } from 'express';
 import auth from '../config/auth';
 import { validationResult } from 'express-validator';
 
+import { transport, readRenderHtml } from '../config/mailer';
+import handlebars from 'handlebars';
+import path from 'path';
+
 const prisma = new PrismaClient();
 
 class UserController {
@@ -26,6 +30,33 @@ class UserController {
 
       const user = await prisma.user.create({
         data: userInput,
+      });
+
+      const pathTemplate = path.resolve(
+        __dirname,
+        '..',
+        '..',
+        'templates',
+        'messageTemplate.html',
+      );
+      readRenderHtml(pathTemplate, (htmlTemplate: any) => {
+        //Pegando o template para mensagens de boas vindas
+        const template = handlebars.compile(htmlTemplate);
+        const replacements = {
+          name: request.body.name,
+          message: 'Seja Bem Vindo!!',
+        };
+        const htmlToSend = template(replacements);
+        const message = {
+          from: process.env.MAIL_SENDER,
+          to: request.body.email,
+          subject: 'Bem vindo',
+          html: htmlToSend,
+        };
+        // Ao enviar email, ocorre erro de credenciais
+        // transport.sendMail(message, (error) => {
+        //   throw error;
+        // });
       });
 
       return response.status(201).json(user);
