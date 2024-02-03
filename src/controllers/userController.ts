@@ -1,12 +1,14 @@
 import { Prisma, PrismaClient } from '@prisma/client';
 import { Request, Response, response } from 'express';
 import auth from '../config/auth';
+import { validationResult } from 'express-validator';
 
 const prisma = new PrismaClient();
 
 class UserController {
   async create(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { cpf, email, address, password, firstName, lastName } =
         request.body;
 
@@ -28,7 +30,7 @@ class UserController {
 
       return response.status(201).json(user);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
@@ -47,6 +49,7 @@ class UserController {
 
   async read(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
       const user = await prisma.user.findUnique({
         where: {
@@ -58,12 +61,13 @@ class UserController {
       });
       return response.status(201).json(user);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async update(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
       const { cpf, email, address, firstName, lastName } = request.body;
       let userInput: Prisma.UserUpdateInput = {
@@ -81,12 +85,13 @@ class UserController {
       });
       return response.status(201).json(user);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async destroy(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
       const user = await prisma.user.delete({
         where: {
@@ -95,7 +100,7 @@ class UserController {
       });
       return response.status(201).json(user);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 }

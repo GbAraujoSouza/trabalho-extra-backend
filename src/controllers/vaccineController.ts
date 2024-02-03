@@ -1,11 +1,13 @@
 import { Prisma, PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 
 const prisma = new PrismaClient();
 
 class VaccineController {
   async create(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { name, date, nextDosageDate, lotNumber, manufacturer } =
         request.body;
       
@@ -23,19 +25,20 @@ class VaccineController {
       });
       return response.status(201).json(vaccine);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async read(request: Request, response: Response) {
-    const { id } = request.params;
     try {
+      validationResult(request).throw();
+      const { id } = request.params;
       const vaccine = await prisma.vaccine.findUnique({
         where: { id: Number(id) },
       });
       return response.status(200).json(vaccine);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
@@ -54,6 +57,7 @@ class VaccineController {
 
   async update(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
       const { name, date, nextDosageDate, lotNumber, manufacturer } =
         request.body;
@@ -85,12 +89,13 @@ class VaccineController {
       }
       return response.status(404).json({ error: 'Vaccine record not found' });
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async destroy(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
 
       const deletedVaccine = await prisma.vaccine.delete({
@@ -105,7 +110,7 @@ class VaccineController {
       return response.status(404).json({ error: 'Vaccine record not found' });
     } catch (error: any) {
       console.log(error);
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 }

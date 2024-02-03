@@ -1,11 +1,13 @@
 import { Prisma, PrismaClient } from '@prisma/client';
 import { Request, Response } from 'express';
+import { validationResult } from 'express-validator';
 
 const prisma = new PrismaClient();
 
 class PetController {
   async create(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { type, breed, name } = request.body;
       const age = Number(request.body.age);
 
@@ -20,13 +22,14 @@ class PetController {
       });
       return response.status(201).json(pet);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async read(request: Request, response: Response) {
-    const { id } = request.params;
     try {
+      validationResult(request).throw();
+      const { id } = request.params;
       const pet = await prisma.pet.findUnique({
         where: { id: Number(id) },
         include: {
@@ -35,7 +38,7 @@ class PetController {
       });
       return response.status(200).json(pet);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
@@ -48,12 +51,13 @@ class PetController {
       });
       return response.status(200).json(pets);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async update(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
       const { type, breed, name, age } = request.body;
 
@@ -70,23 +74,15 @@ class PetController {
         },
         data: petInput,
       });
-
-      if (updatedPet) {
-        const pet = await prisma.pet.findUnique({
-          where: {
-            id: Number(id),
-          },
-        });
-        return response.status(201).json(pet);
-      }
-      return response.status(404).json({ error: 'Pet not found' });
+      return response.status(201).json(updatedPet);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
   async destroy(request: Request, response: Response) {
     try {
+      validationResult(request).throw();
       const { id } = request.params;
 
       const deletedPet = await prisma.pet.delete({
@@ -94,14 +90,9 @@ class PetController {
           id: Number(id),
         },
       });
-
-      if (deletedPet) {
-        return response.status(200).json(deletedPet);
-      }
-      return response.status(404).json({ error: 'Pet not found' });
+      return response.status(200).json(deletedPet);
     } catch (error: any) {
-      console.log(error);
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
@@ -128,7 +119,7 @@ class PetController {
       });
       return response.status(201).json(vaccine);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
@@ -140,7 +131,7 @@ class PetController {
       });
       return response.status(200).json(vaccines);
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 
@@ -156,9 +147,9 @@ class PetController {
       if (removedVaccine) {
         return response.status(200).json(removedVaccine);
       }
-      return response.status(404).json({error: "Vacine record not found."})
+      return response.status(404).json({ error: 'Vacine record not found.' });
     } catch (error: any) {
-      return response.status(500).json({ error: error.message });
+      return response.status(500).json(error);
     }
   }
 }
