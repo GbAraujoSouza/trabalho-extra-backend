@@ -27,11 +27,13 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@types/multer": "^1.4.11",
     "@types/nodemailer": "^6.4.14",
     "crypto": "^1.0.1",
     "express-validator": "^7.0.1",
     "handlebars": "^4.7.8",
     "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.9",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1"

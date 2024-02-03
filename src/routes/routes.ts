@@ -9,6 +9,8 @@ import {
   validatorVaccine,
 } from '../config/validator';
 
+import { photoUpload, textUpload } from '../config/files';
+
 const router = Router();
 
 router.post('/login', AuthController.login);
@@ -53,5 +55,8 @@ router.delete(
   validatorVaccine('destroy')!,
   VaccineController.destroy,
 );
+
+router.post('/user/profileImage/', photoUpload.single('profileImage'));
+router.post('/user/text/', textUpload.single('text'));
 
 export default router;
